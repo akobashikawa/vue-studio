@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
   <style>
-   
+  .removed .checkbox label {
+    text-decoration: line-through;
+  }
   </style>
 </head>
 
@@ -18,8 +20,14 @@
     <h1>My Shopping List</h1>
 
     <ul>
-      <li>{{ items[0] }}</li>
-      <li>{{ items[1] }}</li>
+      <li v-for="item in items" v-bind:class="{removed: item.checked}">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" v-model="item.checked">
+            {{ item.text }}
+          </label>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -28,8 +36,8 @@
   <script>
   const data = {
     items: [
-      'Bananas',
-      'Apples',
+      {text: 'Bananas', checked: true},
+      {text: 'Apples', checked: false},
     ]};
   var app = new Vue({
     el: '#app',
