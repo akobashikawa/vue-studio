@@ -29,6 +29,13 @@
         </div>
       </li>
     </ul>
+
+    <div class="input-group">
+      <input type="text" class="form-control" v-model="newItem">
+      <span class="input-group-append">
+        <button type="button" class="btn btn-primary" @click="addItem">Add!</button>
+      </span>
+    </div>
   </div>
 
   <script src="https://unpkg.com/vue"></script>
@@ -38,10 +45,25 @@
     items: [
       {text: 'Bananas', checked: true},
       {text: 'Apples', checked: false},
-    ]};
+    ],
+    newItem: ''
+  };
   var app = new Vue({
     el: '#app',
-    data
+    data,
+    methods: {
+      addItem() {
+        const text = this.newItem.trim();
+        if (!text) {
+          return;
+        }
+        const item = {
+          text,
+          checked: false
+        };
+        this.items.push(item);
+      }
+    }
   });
   </script>
 
