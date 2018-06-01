@@ -16,9 +16,26 @@
 <body>
   <div class="container" id="app">
     <h1>My Shopping List</h1>
+
+    <ul>
+      <li>{{ items[0] }}</li>
+      <li>{{ items[1] }}</li>
+    </ul>
   </div>
 
   <script src="https://unpkg.com/vue"></script>
+
+  <script>
+  const data = {
+    items: [
+      'Bananas',
+      'Apples',
+    ]};
+  var app = new Vue({
+    el: '#app',
+    data
+  });
+  </script>
 
 </body>
 
